@@ -1,75 +1,40 @@
-# --- PYTHON & BACKEND ---
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
-env/
 venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-
-# --- DATA SCIENCE & JUPYTER ---
-# Ignora i checkpoint dei notebook
-.ipynb_checkpoints
-# Ignora i profili di connessione DB locali
-profile_default/
-ipython_config.py
-
-# --- DATI & MODELLI (IMPORTANTE) ---
-# Non caricare mai dataset pesanti o modelli addestrati enormi su GitHub
-# Se vuoi condividere dati piccoli, crea una cartella "sample_data"
-data/
-*.csv
-*.xlsx
-*.json
-*.parquet
-*.sql
-*.sqlite
-
-# Modelli ML salvati (spesso >100MB)
-models/
-ml_models/
-*.pkl
-*.h5
-*.pt
-*.pth
-*.joblib
-*.onnx
-
-# --- FRONTEND (VUE.JS / NODE) ---
-# Fondamentale: non caricare mai node_modules
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Output della build di produzione
-dist/
-dist-ssr/
-coverage/
-
-# --- FILE DI CONFIGURAZIONE & SEGRETI ---
-# Mai caricare password o chiavi API
+env/
 .env
 .env.local
-.env.*.local
-config.py
-secrets.json
+*.egg-info/
+.pytest_cache/
 
-# --- IDE & SISTEMA OPERATIVO ---
+# Database
+*.db
+*.sqlite3
+
+# ML Models
+data/models/*
+!data/models/.gitkeep
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
 Thumbs.db
-.idea/
-.vscode/
-*.swp
 
-# --- DOCKER ---
-# Ignora override locali che potresti avere
+# Docker
+.docker/
 docker-compose.override.yml
-
-# --- LOGS ---
-logs/
-*.log
