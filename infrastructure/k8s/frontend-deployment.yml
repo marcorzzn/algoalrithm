@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: football-frontend
+  namespace: football-analytics
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: football-frontend
+  template:
+    metadata:
+      labels:
+        app: football-frontend
+    spec:
+      containers:
+      - name: frontend
+        image: ghcr.io/yourusername/football-analytics-frontend:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: VITE_API_URL
+          value: "/api"
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: football-frontend
+  namespace: football-analytics
+spec:
+  selector:
+    app: football-frontend
+  ports:
+  - port: 80
+    targetPort: 3000
+  type: ClusterIP

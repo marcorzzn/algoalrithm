@@ -1,0 +1,25 @@
+name: Docker Build Manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag'
+        required: true
+        default: 'latest'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Build Docker Compose
+      run: docker-compose build
+    
+    - name: Test containers
+      run: |
+        docker-compose up -d
+        sleep 10
+        docker-compose ps
+        docker-compose down

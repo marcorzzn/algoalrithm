@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: football-config
+  namespace: football-analytics
+data:
+  DEBUG: "false"
+  API_WORKERS: "4"
+  DATABASE_URL: "postgresql://admin:admin123@postgres:5432/football_analytics"
+  REDIS_URL: "redis://redis:6379"

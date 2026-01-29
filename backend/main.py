@@ -41,3 +41,26 @@ async def root():
             "value_bets": "/api/betting/value-bets"
         }
     }
+    # backend/main.py
+
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+from api.routes import predictions  # <-- IMPORTA QUI
+
+app = FastAPI(title="Football Analytics API", version="1.0.0")
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# REGISTRA IL ROUTER
+app.include_router(predictions.router, prefix="/api/predictions", tags=["predictions"])
+
+@app.get("/")
+async def root():
+    return {"message": "Football Analytics API"}
